@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GAMES } from '../data/games';
-import { Card } from '../components/ui/KidsUI';
-import { useGame } from '../context/GameContext';
+import { GAMES } from '../../data/games';
+import { Card } from '../ui/KidsUI';
+import { useGame } from '../../context/GameContext';
 import { Lock, Star, Trophy } from 'lucide-react';
 
 const Dashboard = ({ onSelectGame }) => {

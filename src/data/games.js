@@ -2,14 +2,14 @@ import {
   Type, 
   Binary, 
   Mic, 
-  Repeat, 
+  RotateCcw, 
   FileText, 
-  PersonStanding, 
-  Running, 
+  User, 
+  Activity, 
   Layers, 
   Shuffle, 
   CircleDot, 
-  Pointer, 
+  MousePointer2, 
   UserCircle, 
   LayoutList, 
   Image as ImageIcon, 
@@ -17,7 +17,7 @@ import {
   BookOpen, 
   Sun, 
   Palette, 
-  Apple, 
+  Grape, 
   Bird, 
   Users, 
   School, 
@@ -28,6 +28,12 @@ import {
   PenTool, 
   MessageSquare
 } from 'lucide-react';
+
+const PersonStanding = User;
+const Running = Activity;
+const Pointer = MousePointer2;
+const Apple = Grape;
+const Repeat = RotateCcw;
 
 export const GAMES = [
   { id: 'alphabet-matching', title: 'Alphabet Matching', icon: Type, color: 'bg-pink-400', category: 'Basics' },
