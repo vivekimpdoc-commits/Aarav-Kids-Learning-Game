@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { GameProvider, useGame } from './context/GameContext';
+import { motion, AnimatePresence } from 'framer-motion';
 import Dashboard from './components/layout/Dashboard';
 import LevelSelection from './components/layout/LevelSelection';
 import GameManager from './components/layout/GameManager';
@@ -39,7 +40,7 @@ const COMPONENT_MAP = {
 };
 
 const AppContent = () => {
-  const [view, setView] = useState('dashboard'); // dashboard, shop, levels, gameplay
+  const [view, setView] = useState('dashboard'); 
   const [activeGame, setActiveGame] = useState(null);
   const [activeLevel, setActiveLevel] = useState(null);
   const { theme } = useGame();
@@ -49,6 +50,7 @@ const AppContent = () => {
       case 'gameplay':
         return (
           <GameManager 
+            key="gameplay"
             level={activeLevel} 
             gameComponent={COMPONENT_MAP[activeLevel.gameType] || UniversalGame}
             onBack={() => setView('levels')}
@@ -57,6 +59,7 @@ const AppContent = () => {
       case 'levels':
         return (
           <LevelSelection 
+            key="levels"
             game={activeGame}
             onSelectLevel={(level) => {
               setActiveLevel(level);
@@ -66,10 +69,11 @@ const AppContent = () => {
           />
         );
       case 'shop':
-        return <CharacterShop onBack={() => setView('dashboard')} />;
+        return <CharacterShop key="shop" onBack={() => setView('dashboard')} />;
       default:
         return (
           <Dashboard 
+            key="dashboard"
             onSelectGame={(gameId) => {
               const game = GAMES.find(g => g.id === gameId);
               setActiveGame(game);
@@ -83,7 +87,18 @@ const AppContent = () => {
 
   return (
     <div className={theme === 'dark' ? 'dark bg-slate-900 min-h-screen' : 'bg-sky-50 min-h-screen'}>
-      {renderView()}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={view}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.3 }}
+          className="min-h-screen"
+        >
+          {renderView()}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };
