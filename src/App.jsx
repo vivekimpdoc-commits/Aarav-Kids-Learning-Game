@@ -10,6 +10,8 @@ import NamingWords from './components/games/NamingWords';
 import ActionWords from './components/games/ActionWords';
 import NumbersInWords from './components/games/NumbersInWords';
 import ColoursGame from './components/games/ColoursGame';
+import DaysOfWeek from './components/games/DaysOfWeek';
+import HeSheQuiz from './components/games/HeSheQuiz';
 import { ArrowLeft, Volume2, VolumeX, Moon, Sun } from 'lucide-react';
 import { Button } from './components/ui/KidsUI';
 
@@ -52,6 +54,10 @@ const AppContent = () => {
         return <NumbersInWords onBack={() => setActiveGame(null)} />;
       case 'colours-name':
         return <ColoursGame onBack={() => setActiveGame(null)} />;
+      case 'days-week':
+        return <DaysOfWeek onBack={() => setActiveGame(null)} />;
+      case 'he-she':
+        return <HeSheQuiz onBack={() => setActiveGame(null)} />;
       default:
         if (activeGame) return <GameStub id={activeGame} onBack={() => setActiveGame(null)} />;
         return (
