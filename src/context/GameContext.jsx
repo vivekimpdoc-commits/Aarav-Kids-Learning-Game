@@ -7,7 +7,10 @@ export const GameProvider = ({ children }) => {
   const [stars, setStars] = useState(() => parseInt(localStorage.getItem('aarav_kids_stars') || '40'));
   const [unlockedGames, setUnlockedGames] = useState(() => {
     const saved = localStorage.getItem('aarav_kids_unlocked');
-    return saved ? JSON.parse(saved) : GAMES.map(g => g.id);
+    const savedIds = saved ? JSON.parse(saved) : [];
+    // Merge saved IDs with all current game IDs to ensure everything is available
+    const allIds = [...new Set([...savedIds, ...GAMES.map(g => g.id)])];
+    return allIds;
   });
   const [currentLevel, setCurrentLevel] = useState(() => parseInt(localStorage.getItem('aarav_kids_level') || '1'));
   const [theme, setTheme] = useState(() => localStorage.getItem('aarav_kids_theme') || 'light');
