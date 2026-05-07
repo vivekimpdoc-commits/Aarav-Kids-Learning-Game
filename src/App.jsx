@@ -6,6 +6,10 @@ import VowelsConsonants from './components/games/VowelsConsonants';
 import AIFriend from './components/games/AIFriend';
 import PictureMatch from './components/games/PictureMatch';
 import InteractiveStory from './components/games/InteractiveStory';
+import NamingWords from './components/games/NamingWords';
+import ActionWords from './components/games/ActionWords';
+import NumbersInWords from './components/games/NumbersInWords';
+import ColoursGame from './components/games/ColoursGame';
 import { ArrowLeft, Volume2, VolumeX, Moon, Sun } from 'lucide-react';
 import { Button } from './components/ui/KidsUI';
 
@@ -40,6 +44,14 @@ const AppContent = () => {
         return <PictureMatch onBack={() => setActiveGame(null)} />;
       case 'story-reading':
         return <InteractiveStory onBack={() => setActiveGame(null)} />;
+      case 'naming-words':
+        return <NamingWords onBack={() => setActiveGame(null)} />;
+      case 'action-words':
+        return <ActionWords onBack={() => setActiveGame(null)} />;
+      case 'numbers-words':
+        return <NumbersInWords onBack={() => setActiveGame(null)} />;
+      case 'colours-name':
+        return <ColoursGame onBack={() => setActiveGame(null)} />;
       default:
         if (activeGame) return <GameStub id={activeGame} onBack={() => setActiveGame(null)} />;
         return (

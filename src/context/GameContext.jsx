@@ -1,12 +1,13 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { GAMES } from '../data/games';
 
 const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
-  const [stars, setStars] = useState(() => parseInt(localStorage.getItem('aarav_kids_stars') || '0'));
+  const [stars, setStars] = useState(() => parseInt(localStorage.getItem('aarav_kids_stars') || '40'));
   const [unlockedGames, setUnlockedGames] = useState(() => {
     const saved = localStorage.getItem('aarav_kids_unlocked');
-    return saved ? JSON.parse(saved) : ['alphabet-matching'];
+    return saved ? JSON.parse(saved) : GAMES.map(g => g.id);
   });
   const [currentLevel, setCurrentLevel] = useState(() => parseInt(localStorage.getItem('aarav_kids_level') || '1'));
   const [theme, setTheme] = useState(() => localStorage.getItem('aarav_kids_theme') || 'light');
