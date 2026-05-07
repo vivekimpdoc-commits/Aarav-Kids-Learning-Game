@@ -21,6 +21,7 @@ import HeSheQuiz from './components/games/HeSheQuiz';
 import LetterTracing from './components/games/LetterTracing';
 import PoemsPlayer from './components/games/PoemsPlayer';
 import UniversalGame from './components/games/UniversalGame';
+import MissingLetter from './components/games/MissingLetter';
 import { GAMES } from './data/games';
 
 const COMPONENT_MAP = {
@@ -37,6 +38,7 @@ const COMPONENT_MAP = {
   'he-she': HeSheQuiz,
   'letter-tracing': LetterTracing,
   'poems-rhymes': PoemsPlayer,
+  'find-missing': MissingLetter,
 };
 
 const AppContent = () => {

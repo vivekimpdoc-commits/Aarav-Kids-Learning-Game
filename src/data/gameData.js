@@ -13,15 +13,6 @@ export const GAME_DATA = {
       ],
       3: [
         { q: 'Which letter says "Eh"?', a: 'E', opts: ['E', 'I', 'A'] },
-        { q: 'Which letter says "Fuh"?', a: 'F', opts: ['F', 'V', 'P'] },
-      ],
-      4: [
-        { q: 'Which letter says "Guh"?', a: 'G', opts: ['G', 'J', 'K'] },
-        { q: 'Which letter says "Huh"?', a: 'H', opts: ['H', 'W', 'K'] },
-      ],
-      5: [
-        { q: 'Which letter says "Ih"?', a: 'I', opts: ['I', 'E', 'Y'] },
-        { q: 'Which letter says "Juh"?', a: 'J', opts: ['J', 'G', 'Z'] },
       ]
     }
   },
@@ -34,15 +25,6 @@ export const GAME_DATA = {
       ],
       2: [
         { left: 'SUN', right: 'RUN' }, { left: 'PAN', right: 'FAN' },
-      ],
-      3: [
-        { left: 'MAP', right: 'TAP' }, { left: 'PEN', right: 'HEN' },
-      ],
-      4: [
-        { left: 'BIG', right: 'PIG' }, { left: 'HOT', right: 'POT' },
-      ],
-      5: [
-        { left: 'WALL', right: 'BALL' }, { left: 'CAKE', right: 'BAKE' },
       ]
     }
   },
@@ -57,18 +39,32 @@ export const GAME_DATA = {
       2: [
         { name: 'School', cat: 'Place', emoji: '🏫' },
         { name: 'Pencil', cat: 'Thing', emoji: '✏️' },
+      ]
+    }
+  },
+  'one-and-many': {
+    type: 'quiz',
+    title: 'One and Many',
+    levels: {
+      1: [
+        { q: 'Plural of "CAT"?', a: 'CATS', opts: ['CATS', 'CATIES', 'CATA'] },
+        { q: 'Plural of "BALL"?', a: 'BALLS', opts: ['BALLS', 'BALES', 'BALL'] },
       ],
-      3: [
-        { name: 'Doctor', cat: 'Person', emoji: '👨‍⚕️' },
-        { name: 'Elephant', cat: 'Animal', emoji: '🐘' },
+      2: [
+        { q: 'Plural of "BOX"?', a: 'BOXES', opts: ['BOXES', 'BOXS', 'BOXY'] },
+        { q: 'Plural of "TOY"?', a: 'TOYS', opts: ['TOYS', 'TOIES', 'TOYA'] },
+      ]
+    }
+  },
+  'opposite-words': {
+    type: 'match',
+    title: 'Opposite Words',
+    levels: {
+      1: [
+        { left: 'HOT', right: 'COLD' }, { left: 'BIG', right: 'SMALL' },
       ],
-      4: [
-        { name: 'Hospital', cat: 'Place', emoji: '🏥' },
-        { name: 'Book', cat: 'Thing', emoji: '📖' },
-      ],
-      5: [
-        { name: 'Farmer', cat: 'Person', emoji: '👨‍🌾' },
-        { name: 'Tiger', cat: 'Animal', emoji: '🐯' },
+      2: [
+        { left: 'UP', right: 'DOWN' }, { left: 'HAPPY', right: 'SAD' },
       ]
     }
   },
@@ -79,22 +75,6 @@ export const GAME_DATA = {
       1: [
         { q: '___ Apple', a: 'An', opts: ['A', 'An'] },
         { q: '___ Dog', a: 'A', opts: ['A', 'An'] },
-      ],
-      2: [
-        { q: '___ Orange', a: 'An', opts: ['A', 'An'] },
-        { q: '___ Hat', a: 'A', opts: ['A', 'An'] },
-      ],
-      3: [
-        { q: '___ Elephant', a: 'An', opts: ['A', 'An'] },
-        { q: '___ Umbrella', a: 'An', opts: ['A', 'An'] },
-      ],
-      4: [
-        { q: '___ Ball', a: 'A', opts: ['A', 'An'] },
-        { q: '___ Car', a: 'A', opts: ['A', 'An'] },
-      ],
-      5: [
-        { q: '___ Ice Cream', a: 'An', opts: ['A', 'An'] },
-        { q: '___ Uniform', a: 'A', opts: ['A', 'An'] },
       ]
     }
   },
@@ -105,10 +85,6 @@ export const GAME_DATA = {
       1: [
         { q: 'Near: ___ is a book.', a: 'This', opts: ['This', 'That'] },
         { q: 'Far: ___ is a star.', a: 'That', opts: ['This', 'That'] },
-      ],
-      2: [
-        { q: 'Near: ___ is my toy.', a: 'This', opts: ['This', 'That'] },
-        { q: 'Far: ___ is the moon.', a: 'That', opts: ['This', 'That'] },
       ]
     }
   },
@@ -118,11 +94,6 @@ export const GAME_DATA = {
     levels: {
       1: [
         { q: 'What do you use to see?', a: 'Eyes', opts: ['Eyes', 'Ears', 'Nose'] },
-        { q: 'What do you use to smell?', a: 'Nose', opts: ['Eyes', 'Ears', 'Nose'] },
-      ],
-      2: [
-        { q: 'What do you use to walk?', a: 'Legs', opts: ['Hands', 'Legs', 'Arms'] },
-        { q: 'What do you use to eat?', a: 'Mouth', opts: ['Mouth', 'Eyes', 'Ears'] },
       ]
     }
   },
@@ -133,10 +104,6 @@ export const GAME_DATA = {
       1: [
         { name: 'Apple', cat: 'Fruit', emoji: '🍎' },
         { name: 'Carrot', cat: 'Veggie', emoji: '🥕' },
-      ],
-      2: [
-        { name: 'Banana', cat: 'Fruit', emoji: '🍌' },
-        { name: 'Potato', cat: 'Veggie', emoji: '🥔' },
       ]
     }
   }
