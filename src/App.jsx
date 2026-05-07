@@ -22,6 +22,7 @@ import LetterTracing from './components/games/LetterTracing';
 import PoemsPlayer from './components/games/PoemsPlayer';
 import UniversalGame from './components/games/UniversalGame';
 import MissingLetter from './components/games/MissingLetter';
+import PhonicsGame from './components/games/PhonicsGame';
 import { GAMES } from './data/games';
 
 const COMPONENT_MAP = {
@@ -39,6 +40,7 @@ const COMPONENT_MAP = {
   'letter-tracing': LetterTracing,
   'poems-rhymes': PoemsPlayer,
   'find-missing': MissingLetter,
+  'phonics-sounds': PhonicsGame,
 };
 
 const AppContent = () => {
