@@ -148,6 +148,82 @@ export const GAME_DATA = {
       { name: 'Cherry', cat: 'Fruit', emoji: '🍒' }, { name: 'Peas', cat: 'Veggie', emoji: '🫛' },
     ]
   },
+  'simple-sentences': {
+    type: 'quiz',
+    title: 'Complete the Sentence',
+    questions: [
+      { q: 'The cat ___ on the mat.', a: 'sat', opts: ['sat', 'run', 'fly'] },
+      { q: 'I ___ a big apple.', a: 'eat', opts: ['eat', 'walk', 'jump'] },
+      { q: 'The sun is ___ in the sky.', a: 'bright', opts: ['bright', 'cold', 'wet'] },
+      { q: 'The dog ___ at the cat.', a: 'barked', opts: ['barked', 'sang', 'cooked'] },
+    ]
+  },
+  'greetings': {
+    type: 'quiz',
+    title: 'Greetings & Manners',
+    questions: [
+      { q: 'What do you say in the morning?', a: 'Good Morning', opts: ['Good Morning', 'Good Night', 'Goodbye'] },
+      { q: 'What do you say when you get a gift?', a: 'Thank You', opts: ['Thank You', 'Sorry', 'Hello'] },
+      { q: 'What do you say when you do something wrong?', a: 'Sorry', opts: ['Sorry', 'Welcome', 'Please'] },
+    ]
+  },
+  'animals-birds': {
+    type: 'sorting',
+    title: 'Animal or Bird?',
+    items: [
+      { name: 'Lion', cat: 'Animal', emoji: '🦁' },
+      { name: 'Parrot', cat: 'Bird', emoji: '🦜' },
+      { name: 'Elephant', cat: 'Animal', emoji: '🐘' },
+      { name: 'Sparrow', cat: 'Bird', emoji: '🐦' },
+      { name: 'Tiger', cat: 'Animal', emoji: '🐯' },
+      { name: 'Eagle', cat: 'Bird', emoji: '🦅' },
+    ]
+  },
+  'my-family': {
+    type: 'quiz',
+    title: 'All About Family',
+    questions: [
+      { q: 'Who is your mother\'s husband?', a: 'Father', opts: ['Father', 'Uncle', 'Grandpa'] },
+      { q: 'Who is your father\'s daughter?', a: 'Sister', opts: ['Sister', 'Brother', 'Aunt'] },
+      { q: 'Who is your mother\'s mother?', a: 'Grandmother', opts: ['Grandmother', 'Sister', 'Mother'] },
+    ]
+  },
+  'my-school': {
+    type: 'quiz',
+    title: 'School Objects',
+    questions: [
+      { q: 'Where do you write?', a: 'Notebook', opts: ['Notebook', 'Bottle', 'Chair'] },
+      { q: 'What does the teacher use to write on the board?', a: 'Chalk', opts: ['Chalk', 'Pen', 'Pencil'] },
+      { q: 'Where do you sit in class?', a: 'Bench', opts: ['Bench', 'Table', 'Bag'] },
+    ]
+  },
+  'months-year': {
+    type: 'quiz',
+    title: 'Months of the Year',
+    questions: [
+      { q: 'Which is the first month of the year?', a: 'January', opts: ['January', 'February', 'December'] },
+      { q: 'Which month has Christmas?', a: 'December', opts: ['October', 'November', 'December'] },
+      { q: 'How many months are in a year?', a: '12', opts: ['10', '11', '12'] },
+    ]
+  },
+  'paragraph-writing': {
+    type: 'quiz',
+    title: 'Fill the Story',
+    questions: [
+      { q: 'My name is Aarav. I ___ in Class 1.', a: 'study', opts: ['study', 'play', 'sleep'] },
+      { q: 'I love to eat ___ apples.', a: 'sweet', opts: ['sweet', 'sour', 'bitter'] },
+      { q: 'My school is very ___.', a: 'big', opts: ['big', 'tiny', 'old'] },
+    ]
+  },
+  'picture-reading': {
+    type: 'quiz',
+    title: 'Picture Reading',
+    questions: [
+      { q: '🌳 What is this?', a: 'Tree', opts: ['Tree', 'Flower', 'Grass'] },
+      { q: '🏠 What is this?', a: 'House', opts: ['House', 'Car', 'Boat'] },
+      { q: '🚲 What is this?', a: 'Bicycle', opts: ['Bicycle', 'Plane', 'Train'] },
+    ]
+  },
   'find-missing': {
     type: 'quiz',
     title: 'Find Missing Letter',
@@ -156,12 +232,6 @@ export const GAME_DATA = {
       { q: 'H _ J K', a: 'I', opts: ['L', 'I', 'M'] },
       { q: 'P Q R _', a: 'S', opts: ['T', 'S', 'U'] },
       { q: 'U V _ X', a: 'W', opts: ['W', 'Y', 'Z'] },
-      { q: '_ B C D', a: 'A', opts: ['A', 'E', 'F'] },
-      { q: 'K L M _', a: 'N', opts: ['O', 'N', 'P'] },
-      { q: 'E F _ H', a: 'G', opts: ['I', 'G', 'J'] },
-      { q: 'X Y _', a: 'Z', opts: ['Z', 'W', 'V'] },
-      { q: 'C _ E F', a: 'D', opts: ['D', 'G', 'H'] },
-      { q: 'O P _ R', a: 'Q', opts: ['Q', 'S', 'T'] },
     ]
   }
 };

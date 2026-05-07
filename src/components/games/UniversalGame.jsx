@@ -74,13 +74,13 @@ const UniversalGame = ({ id, onBack }) => {
       );
     }
 
-    if (config.type === 'match') {
+    if (config.type === 'match' && config.pairs) {
       const pair = config.pairs[step];
       return (
         <div className="space-y-12 text-center">
           <div className="flex justify-center items-center gap-12">
             <Card className="w-64 h-64 flex items-center justify-center bg-kids-sun/20">
-              <span className="text-5xl font-black">{pair.left}</span>
+              <span className="text-5xl font-black">{pair?.left}</span>
             </Card>
             <div className="text-6xl text-slate-400">➡️</div>
             <div className="w-64 h-64 border-4 border-dashed border-slate-300 rounded-[2rem] flex items-center justify-center">
@@ -88,8 +88,8 @@ const UniversalGame = ({ id, onBack }) => {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-6">
-            {config.pairs.map(p => (
-              <Button key={p.right} onClick={() => handleChoice(p.right)} variant="secondary" className="text-2xl">
+            {config.pairs.map((p, i) => (
+              <Button key={i} onClick={() => handleChoice(p.right)} variant="secondary" className="text-2xl">
                 {p.right}
               </Button>
             ))}
@@ -98,14 +98,14 @@ const UniversalGame = ({ id, onBack }) => {
       );
     }
 
-    if (config.type === 'sorting') {
+    if (config.type === 'sorting' && config.items) {
       const item = config.items[step];
       return (
         <div className="space-y-12 text-center">
-          <motion.div key={item.name} initial={{ scale: 0 }} animate={{ scale: 1 }} className="text-[12rem]">
-            {item.emoji}
+          <motion.div key={item?.name} initial={{ scale: 0 }} animate={{ scale: 1 }} className="text-[12rem]">
+            {item?.emoji}
           </motion.div>
-          <h3 className="text-5xl font-black text-slate-800 uppercase">{item.name}</h3>
+          <h3 className="text-5xl font-black text-slate-800 uppercase">{item?.name}</h3>
           <div className="grid grid-cols-2 gap-8">
             <Button onClick={() => handleChoice('Fruit')} variant="primary" className="py-10 text-3xl">FRUIT 🍎</Button>
             <Button onClick={() => handleChoice('Veggie')} variant="success" className="py-10 text-3xl">VEGGIE 🥕</Button>
@@ -113,6 +113,13 @@ const UniversalGame = ({ id, onBack }) => {
         </div>
       );
     }
+
+    return (
+      <div className="text-center py-20">
+        <h3 className="text-3xl font-bold text-slate-400">Oops! This game is still being set up.</h3>
+        <Button onClick={onBack} className="mt-8">Go Back</Button>
+      </div>
+    );
   };
 
   return (
