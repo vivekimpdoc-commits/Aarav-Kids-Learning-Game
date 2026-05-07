@@ -1,16 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useGame } from '../../context/GameContext';
 import { Button, Card } from '../ui/KidsUI';
-import { ArrowLeft, Star } from 'lucide-react';
-import confetti from 'canvas-confetti';
 
-const ActionWords = ({ onBack }) => {
-  const { addStars } = useGame();
-  const [current, setCurrent] = useState(null);
-  const [options, setOptions] = useState([]);
-  const [score, setScore] = useState(0);
-
+const ActionWords = ({ onScore, difficulty, isPaused }) => {
   const actions = [
     { name: 'RUN', emoji: '🏃', animation: { x: [0, 100, 0] } },
     { name: 'JUMP', emoji: '🦘', animation: { y: [0, -100, 0] } },
@@ -18,91 +10,58 @@ const ActionWords = ({ onBack }) => {
     { name: 'EAT', emoji: '🍕', animation: { scale: [1, 1.2, 1] } },
     { name: 'DANCE', emoji: '💃', animation: { rotate: [0, 20, -20, 0] } },
     { name: 'SWIM', emoji: '🏊', animation: { x: [0, -50, 50, 0] } },
-    { name: 'CLAP', emoji: '👏', animation: { scale: [1, 0.8, 1.2, 1] } },
-    { name: 'LAUGH', emoji: '😂', animation: { y: [0, -20, 0] } },
-    { name: 'READ', emoji: '📖', animation: { rotateY: [0, 180, 0] } },
-    { name: 'WRITE', emoji: '✏️', animation: { x: [0, 10, -10, 0] } },
-    { name: 'SING', emoji: '🎤', animation: { scale: [1, 1.1, 0.9, 1] } },
-    { name: 'DRINK', emoji: '🥤', animation: { rotate: [0, -45, 0] } },
-    { name: 'FLY', emoji: '✈️', animation: { x: [-100, 100], y: [-20, 20] } },
-    { name: 'SIT', emoji: '🪑', animation: { y: [0, 20] } },
-    { name: 'STAND', emoji: '🧍', animation: { y: [20, 0] } },
-    { name: 'WAVE', emoji: '👋', animation: { rotate: [0, 30, -30, 0] } },
-    { name: 'DRIVE', emoji: '🚗', animation: { x: [0, 10, 0], y: [0, 2, 0] } },
-    { name: 'PAINT', emoji: '🎨', animation: { x: [0, 20, 0], y: [0, -20, 0] } },
-    { name: 'CLEAN', emoji: '✨', animation: { opacity: [0, 1, 0] } },
-    { name: 'CRY', emoji: '😢', animation: { y: [0, 5, 0] } },
   ];
 
+  const [current, setCurrent] = useState(0);
+  const [options, setOptions] = useState([]);
+
+  React.useEffect(() => {
+    generateRound();
+  }, [current]);
+
   const generateRound = () => {
-    const target = actions[Math.floor(Math.random() * actions.length)];
-    const opts = [target];
+    const target = actions[current];
+    const opts = [target.name];
     while (opts.length < 4) {
-      const random = actions[Math.floor(Math.random() * actions.length)];
-      if (!opts.find(o => o.name === random.name)) opts.push(random);
+      const random = actions[Math.floor(Math.random() * actions.length)].name;
+      if (!opts.includes(random)) opts.push(random);
     }
-    setCurrent(target);
     setOptions(opts.sort(() => Math.random() - 0.5));
   };
 
-  useEffect(() => generateRound(), []);
-
   const handleChoice = (name) => {
-    if (name === current.name) {
-      setScore(s => s + 10);
-      addStars(5);
-      confetti({ particleCount: 50, spread: 60 });
-      const synth = window.speechSynthesis;
-      const utter = new SpeechSynthesisUtterance(`Yes! That is ${name}`);
-      synth.speak(utter);
-      setTimeout(generateRound, 1500);
-    } else {
-      const synth = window.speechSynthesis;
-      const utter = new SpeechSynthesisUtterance(`Try again!`);
-      synth.speak(utter);
+    if (isPaused) return;
+    if (name === actions[current].name) {
+      onScore(1);
+      setCurrent((current + 1) % actions.length);
     }
   };
 
-  if (!current) return null;
-
   return (
-    <div className="min-h-screen bg-kids-purple/5 p-8 flex flex-col items-center">
-      <header className="w-full flex justify-between items-center mb-12">
-        <Button onClick={onBack} variant="secondary" size="sm">
-          <ArrowLeft /> Back
-        </Button>
-        <div className="bg-white px-6 py-2 rounded-full border-4 border-slate-800 shadow-[0_4px_0_0_rgba(30,41,59,1)] flex items-center gap-2">
-          <Star className="text-yellow-500 fill-yellow-500" />
-          <span className="text-2xl font-black">{score}</span>
-        </div>
-      </header>
+    <div className="h-full flex flex-col items-center justify-center p-4">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          animate={actions[current].animation}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="text-[15rem] mb-12 drop-shadow-2xl"
+        >
+          {actions[current].emoji}
+        </motion.div>
+      </AnimatePresence>
 
-      <main className="max-w-3xl w-full text-center space-y-12">
-        <h2 className="text-5xl font-black text-slate-800 underline decoration-kids-purple">Action Words!</h2>
-        
-        <div className="flex justify-center py-12">
-          <motion.div
-            key={current.name}
-            animate={current.animation}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="text-[15rem] leading-none drop-shadow-2xl"
+      <div className="grid grid-cols-2 gap-6 w-full max-w-xl">
+        {options.map(opt => (
+          <Button
+            key={opt}
+            onClick={() => handleChoice(opt)}
+            className="text-3xl py-10"
+            variant="secondary"
           >
-            {current.emoji}
-          </motion.div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-6">
-          {options.map((opt) => (
-            <Button
-              key={opt.name}
-              onClick={() => handleChoice(opt.name)}
-              className="text-4xl py-8"
-            >
-              {opt.name}
-            </Button>
-          ))}
-        </div>
-      </main>
+            {opt}
+          </Button>
+        ))}
+      </div>
     </div>
   );
 };

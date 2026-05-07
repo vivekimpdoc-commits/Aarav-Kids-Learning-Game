@@ -1,116 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import { motion, Reorder } from 'framer-motion';
-import { useGame } from '../../context/GameContext';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button, Card } from '../ui/KidsUI';
-import { ArrowLeft, Star, Heart, Skull } from 'lucide-react';
-import confetti from 'canvas-confetti';
 
-const DaysOfWeek = ({ onBack }) => {
-  const { addStars } = useGame();
-  const correctOrder = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  const [items, setItems] = useState([]);
-  const [lives, setLives] = useState(3);
-  const [isGameOver, setIsGameOver] = useState(false);
-  const [isWon, setIsWon] = useState(false);
+const DAYS = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'];
 
-  useEffect(() => {
-    setItems([...correctOrder].sort(() => Math.random() - 0.5));
-  }, []);
+const DaysOfWeek = ({ onScore, difficulty, isPaused }) => {
+  const [current, setCurrent] = useState(0);
+  const [options, setOptions] = useState([]);
 
-  const checkOrder = () => {
-    const isCorrect = items.every((val, index) => val === correctOrder[index]);
-    if (isCorrect) {
-      setIsWon(true);
-      addStars(30);
-      confetti({ particleCount: 150, spread: 70 });
-      const synth = window.speechSynthesis;
-      const utter = new SpeechSynthesisUtterance("Amazing! You know all the days of the week!");
-      synth.speak(utter);
-    } else {
-      setLives(l => {
-        if (l <= 1) {
-          setIsGameOver(true);
-          return 0;
-        }
-        return l - 1;
-      });
-      const synth = window.speechSynthesis;
-      const utter = new SpeechSynthesisUtterance("Not quite! Try again.");
-      synth.speak(utter);
+  React.useEffect(() => {
+    generateRound();
+  }, [current]);
+
+  const generateRound = () => {
+    const target = DAYS[current];
+    const opts = [target];
+    while (opts.length < 4) {
+      const random = DAYS[Math.floor(Math.random() * DAYS.length)];
+      if (!opts.includes(random)) opts.push(random);
+    }
+    setOptions(opts.sort(() => Math.random() - 0.5));
+  };
+
+  const handleChoice = (day) => {
+    if (isPaused) return;
+    if (day === DAYS[current]) {
+      onScore(1);
+      setCurrent((current + 1) % DAYS.length);
     }
   };
 
   return (
-    <div className="min-h-screen bg-kids-sky/5 p-8 flex flex-col items-center">
-      <header className="w-full flex justify-between items-center mb-12">
-        <Button onClick={onBack} variant="secondary" size="sm">
-          <ArrowLeft /> Back
-        </Button>
-        <div className="flex gap-4">
-          <div className="bg-white px-6 py-2 rounded-full border-4 border-slate-800 shadow-[0_4px_0_0_rgba(30,41,59,1)] flex items-center gap-2">
-            {[...Array(3)].map((_, i) => (
-              <Heart key={i} className={`w-8 h-8 ${i < lives ? 'text-red-500 fill-red-500' : 'text-slate-300'}`} />
-            ))}
+    <div className="h-full flex flex-col items-center justify-center p-4">
+      <div className="text-center mb-12">
+        <p className="text-slate-500 font-bold uppercase tracking-widest mb-2 italic">What comes next?</p>
+        <div className="flex gap-4 justify-center flex-wrap">
+          {DAYS.slice(0, current).map(d => (
+            <div key={d} className="bg-green-100 text-green-600 px-4 py-1 rounded-full text-xs font-black border-2 border-green-200 opacity-50">
+              {d}
+            </div>
+          ))}
+          <div className="bg-sky-500 text-white px-8 py-3 rounded-2xl text-2xl font-black border-4 border-white shadow-lg animate-bounce">
+            ???
           </div>
         </div>
-      </header>
+      </div>
 
-      <main className="max-w-md w-full text-center space-y-8">
-        <h2 className="text-5xl font-black text-slate-800">Days of the Week</h2>
-        <p className="text-xl font-bold text-slate-600">Drag them into the correct order!</p>
-
-        <Reorder.Group axis="y" values={items} onReorder={setItems} className="space-y-3">
-          {items.map((day) => (
-            <Reorder.Item key={day} value={day}>
-              <Card className="py-4 cursor-grab active:cursor-grabbing hover:bg-slate-50 transition-colors">
-                <span className="text-2xl font-black text-slate-800">{day}</span>
-              </Card>
-            </Reorder.Item>
-          ))}
-        </Reorder.Group>
-
-        <Button onClick={checkOrder} variant="success" className="w-full mt-8">
-          Check My Order!
-        </Button>
-      </main>
-
-      <AnimatePresence>
-        {(isGameOver || isWon) && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="fixed inset-0 flex items-center justify-center bg-slate-900/80 backdrop-blur-md z-50 p-4"
+      <div className="grid grid-cols-2 gap-6 w-full max-w-xl">
+        {options.map(opt => (
+          <Button
+            key={opt}
+            onClick={() => handleChoice(opt)}
+            className="text-3xl py-8"
+            variant="secondary"
           >
-            <Card className="max-w-md w-full text-center space-y-8 py-12">
-              <h3 className="text-5xl font-black text-slate-800">
-                {isWon ? 'YOU WON!' : 'OUT! (Game Over)'}
-              </h3>
-              <div className="text-8xl">
-                {isWon ? '🌟' : '😢'}
-              </div>
-              <p className="text-2xl font-bold text-slate-600">
-                {isWon ? 'You are a master of time!' : 'Oh no! You ran out of lives.'}
-              </p>
-              <div className="flex flex-col gap-4">
-                <Button 
-                  onClick={() => {
-                    setLives(3);
-                    setItems([...correctOrder].sort(() => Math.random() - 0.5));
-                    setIsGameOver(false);
-                    setIsWon(false);
-                  }}
-                  variant="primary"
-                >
-                  Try Again
-                </Button>
-                <Button onClick={onBack} variant="secondary">
-                  Exit
-                </Button>
-              </div>
-            </Card>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {opt}
+          </Button>
+        ))}
+      </div>
     </div>
   );
 };

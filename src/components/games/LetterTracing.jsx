@@ -1,18 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useGame } from '../../context/GameContext';
 import { Button, Card } from '../ui/KidsUI';
-import { ArrowLeft, Eraser, Star } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import { Eraser } from 'lucide-react';
 
-const LetterTracing = ({ onBack }) => {
-  const { addStars } = useGame();
+const LetterTracing = ({ onScore, difficulty, isPaused }) => {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const letters = 'ABC'.split('');
   const [currentIdx, setCurrentIdx] = useState(0);
 
   const startDrawing = (e) => {
+    if (isPaused) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const rect = canvas.getBoundingClientRect();
@@ -28,7 +26,7 @@ const LetterTracing = ({ onBack }) => {
   };
 
   const draw = (e) => {
-    if (!isDrawing) return;
+    if (!isDrawing || isPaused) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const rect = canvas.getBoundingClientRect();
@@ -46,27 +44,26 @@ const LetterTracing = ({ onBack }) => {
   };
 
   const handleNext = () => {
-    addStars(10);
-    confetti({ particleCount: 50, origin: { y: 0.8 } });
+    onScore(1);
     if (currentIdx < letters.length - 1) {
       setCurrentIdx(currentIdx + 1);
       clear();
     } else {
-      onBack();
+      setCurrentIdx(0);
+      clear();
     }
   };
 
   return (
-    <div className="min-h-screen bg-kids-sun/5 p-8 flex flex-col items-center">
-      <header className="w-full flex justify-between items-center mb-12">
-        <Button onClick={onBack} variant="secondary" size="sm"><ArrowLeft /> Back</Button>
-        <h2 className="text-4xl font-black text-slate-800 tracking-widest">Trace the Letter!</h2>
+    <div className="h-full flex flex-col items-center justify-center p-4">
+      <div className="flex justify-between w-full max-w-xl mb-4">
+        <h3 className="text-2xl font-black text-slate-800 uppercase italic">Trace: {letters[currentIdx]}</h3>
         <Button onClick={clear} variant="danger" size="sm"><Eraser /> Clear</Button>
-      </header>
+      </div>
 
-      <main className="relative bg-white rounded-[3rem] border-8 border-slate-800 shadow-[0_15px_0_0_rgba(30,41,59,1)] overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-          <span className="text-[30rem] font-black text-slate-100 uppercase border-slate-200 border-dashed border-8 px-20">
+      <div className="relative bg-white rounded-[3rem] border-8 border-slate-800 shadow-2xl overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-10">
+          <span className="text-[30rem] font-black text-slate-800 uppercase">
             {letters[currentIdx]}
           </span>
         </div>
@@ -80,12 +77,12 @@ const LetterTracing = ({ onBack }) => {
           onTouchStart={startDrawing}
           onTouchMove={draw}
           onTouchEnd={() => setIsDrawing(false)}
-          className="relative z-10 cursor-crosshair touch-none"
+          className="relative z-10 cursor-crosshair touch-none max-w-full aspect-square"
         />
-      </main>
+      </div>
 
-      <Button onClick={handleNext} variant="success" className="mt-12 px-20">
-        I'm Done! Next Letter ➡️
+      <Button onClick={handleNext} variant="success" className="mt-8 px-12 py-6 text-2xl">
+        I'm Done! ➡️
       </Button>
     </div>
   );
