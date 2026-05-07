@@ -3,6 +3,7 @@ import { GameProvider, useGame } from './context/GameContext';
 import Dashboard from './components/layout/Dashboard';
 import LevelSelection from './components/layout/LevelSelection';
 import GameManager from './components/layout/GameManager';
+import CharacterShop from './components/layout/CharacterShop';
 
 // Import all game components
 import AlphabetMatching from './components/games/AlphabetMatching';
@@ -38,44 +39,50 @@ const COMPONENT_MAP = {
 };
 
 const AppContent = () => {
+  const [view, setView] = useState('dashboard'); // dashboard, shop, levels, gameplay
   const [activeGame, setActiveGame] = useState(null);
   const [activeLevel, setActiveLevel] = useState(null);
   const { theme } = useGame();
 
   const renderView = () => {
-    // 3. Gameplay Screen
-    if (activeLevel) {
-      return (
-        <GameManager 
-          level={activeLevel} 
-          gameComponent={COMPONENT_MAP[activeLevel.gameType] || UniversalGame}
-          onBack={() => setActiveLevel(null)}
-        />
-      );
+    switch (view) {
+      case 'gameplay':
+        return (
+          <GameManager 
+            level={activeLevel} 
+            gameComponent={COMPONENT_MAP[activeLevel.gameType] || UniversalGame}
+            onBack={() => setView('levels')}
+          />
+        );
+      case 'levels':
+        return (
+          <LevelSelection 
+            game={activeGame}
+            onSelectLevel={(level) => {
+              setActiveLevel(level);
+              setView('gameplay');
+            }}
+            onBack={() => setView('dashboard')}
+          />
+        );
+      case 'shop':
+        return <CharacterShop onBack={() => setView('dashboard')} />;
+      default:
+        return (
+          <Dashboard 
+            onSelectGame={(gameId) => {
+              const game = GAMES.find(g => g.id === gameId);
+              setActiveGame(game);
+              setView('levels');
+            }} 
+            onOpenShop={() => setView('shop')}
+          />
+        );
     }
-
-    // 2. Level Selection Screen
-    if (activeGame) {
-      return (
-        <LevelSelection 
-          game={activeGame}
-          onSelectLevel={(level) => setActiveLevel(level)}
-          onBack={() => setActiveGame(null)}
-        />
-      );
-    }
-
-    // 1. Dashboard Screen (Default)
-    return (
-      <Dashboard onSelectGame={(gameId) => {
-        const game = GAMES.find(g => g.id === gameId);
-        setActiveGame(game);
-      }} />
-    );
   };
 
   return (
-    <div className={theme === 'dark' ? 'dark' : ''}>
+    <div className={theme === 'dark' ? 'dark bg-slate-900 min-h-screen' : 'bg-sky-50 min-h-screen'}>
       {renderView()}
     </div>
   );
