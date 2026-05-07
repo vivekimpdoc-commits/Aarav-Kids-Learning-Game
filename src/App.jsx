@@ -23,6 +23,7 @@ import PoemsPlayer from './components/games/PoemsPlayer';
 import UniversalGame from './components/games/UniversalGame';
 import MissingLetter from './components/games/MissingLetter';
 import PhonicsGame from './components/games/PhonicsGame';
+import ThisThatGame from './components/games/ThisThatGame';
 import { GAMES } from './data/games';
 
 const COMPONENT_MAP = {
@@ -41,6 +42,7 @@ const COMPONENT_MAP = {
   'poems-rhymes': PoemsPlayer,
   'find-missing': MissingLetter,
   'phonics-sounds': PhonicsGame,
+  'this-that': ThisThatGame,
 };
 
 const AppContent = () => {
