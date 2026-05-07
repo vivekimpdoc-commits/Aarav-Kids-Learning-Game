@@ -1,53 +1,73 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { GAMES } from '../data/games';
+import { LEVELS } from '../data/levels';
 
 const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
-  const [stars, setStars] = useState(() => parseInt(localStorage.getItem('aarav_kids_stars') || '40'));
-  const [unlockedGames, setUnlockedGames] = useState(() => {
-    const saved = localStorage.getItem('aarav_kids_unlocked');
-    const savedIds = saved ? JSON.parse(saved) : [];
-    // Merge saved IDs with all current game IDs to ensure everything is available
-    const allIds = [...new Set([...savedIds, ...GAMES.map(g => g.id)])];
-    return allIds;
+  const [stars, setStars] = useState(() => parseInt(localStorage.getItem('aarav_kids_stars') || '0'));
+  const [coins, setCoins] = useState(() => parseInt(localStorage.getItem('aarav_kids_coins') || '100'));
+  const [xp, setXp] = useState(() => parseInt(localStorage.getItem('aarav_kids_xp') || '0'));
+  const [unlockedLevels, setUnlockedLevels] = useState(() => {
+    const saved = localStorage.getItem('aarav_kids_levels');
+    return saved ? JSON.parse(saved) : [1]; 
   });
-  const [currentLevel, setCurrentLevel] = useState(() => parseInt(localStorage.getItem('aarav_kids_level') || '1'));
+  const [completedLevels, setCompletedLevels] = useState(() => {
+    const saved = localStorage.getItem('aarav_kids_completed');
+    return saved ? JSON.parse(saved) : {};
+  });
+  const [currentLevel, setCurrentLevel] = useState(() => parseInt(localStorage.getItem('aarav_kids_current_level') || '1'));
   const [theme, setTheme] = useState(() => localStorage.getItem('aarav_kids_theme') || 'light');
+  const [isMuted, setIsMuted] = useState(() => localStorage.getItem('aarav_kids_muted') === 'true');
 
   useEffect(() => {
-    localStorage.setItem('aarav_kids_stars', stars.toString());
-    localStorage.setItem('aarav_kids_unlocked', JSON.stringify(unlockedGames));
-    localStorage.setItem('aarav_kids_level', currentLevel.toString());
+    localStorage.setItem('aarav_kids_stars', stars);
+    localStorage.setItem('aarav_kids_coins', coins);
+    localStorage.setItem('aarav_kids_xp', xp);
+    localStorage.setItem('aarav_kids_levels', JSON.stringify(unlockedLevels));
+    localStorage.setItem('aarav_kids_completed', JSON.stringify(completedLevels));
+    localStorage.setItem('aarav_kids_current_level', currentLevel);
     localStorage.setItem('aarav_kids_theme', theme);
-  }, [stars, unlockedGames, currentLevel, theme]);
+    localStorage.setItem('aarav_kids_muted', isMuted);
+  }, [stars, coins, xp, unlockedLevels, completedLevels, currentLevel, theme, isMuted]);
 
-  const addStars = (amount) => {
-    setStars(prev => prev + amount);
-    // Check for level up every 100 stars
-    const newLevel = Math.floor((stars + amount) / 100) + 1;
-    if (newLevel > currentLevel) {
-      setCurrentLevel(newLevel);
+  const addReward = (s, c, x) => {
+    setStars(prev => prev + s);
+    setCoins(prev => prev + c);
+    setXp(prev => prev + x);
+    
+    // Level up calculation based on XP
+    const newGlobalLevel = Math.floor(xp / 1000) + 1;
+    if (newGlobalLevel > currentLevel) {
+      setCurrentLevel(newGlobalLevel);
     }
   };
 
-  const unlockGame = (gameId) => {
-    if (!unlockedGames.includes(gameId)) {
-      setUnlockedGames(prev => [...prev, gameId]);
+  const completeLevel = (levelId, rating) => {
+    setCompletedLevels(prev => ({ ...prev, [levelId]: rating }));
+    const nextLevel = parseInt(levelId) + 1;
+    if (nextLevel <= 100 && !unlockedLevels.includes(nextLevel)) {
+      setUnlockedLevels(prev => [...prev, nextLevel]);
     }
   };
 
   const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  const toggleMute = () => setIsMuted(prev => !prev);
 
   return (
     <GameContext.Provider value={{
       stars,
-      addStars,
-      unlockedGames,
-      unlockGame,
+      coins,
+      xp,
+      unlockedLevels,
+      completedLevels,
       currentLevel,
       theme,
-      toggleTheme
+      isMuted,
+      addReward,
+      completeLevel,
+      toggleTheme,
+      toggleMute
     }}>
       {children}
     </GameContext.Provider>
