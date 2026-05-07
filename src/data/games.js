@@ -47,6 +47,7 @@ export const GAMES = [
   { id: 'action-words', title: 'Action Words', icon: Running, color: 'bg-red-400', category: 'Grammar' },
   { id: 'one-and-many', title: 'One & Many', icon: Layers, color: 'bg-indigo-400', category: 'Grammar' },
   { id: 'opposite-words', title: 'Opposite Words', icon: Shuffle, color: 'bg-teal-400', category: 'Words' },
+  { id: 'before-after', title: 'Before & After', icon: CalendarDays, color: 'bg-cyan-500', category: 'Basics' },
   { id: 'use-of-a-an', title: 'Use of A / An', icon: CircleDot, color: 'bg-lime-400', category: 'Grammar' },
   { id: 'this-that', title: 'This / That', icon: Pointer, color: 'bg-amber-400', category: 'Grammar' },
   { id: 'he-she', title: 'He / She', icon: UserCircle, color: 'bg-rose-400', category: 'Grammar' },

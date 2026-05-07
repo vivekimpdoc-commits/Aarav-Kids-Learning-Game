@@ -24,6 +24,8 @@ import UniversalGame from './components/games/UniversalGame';
 import MissingLetter from './components/games/MissingLetter';
 import PhonicsGame from './components/games/PhonicsGame';
 import ThisThatGame from './components/games/ThisThatGame';
+import OppositeWords from './components/games/OppositeWords';
+import BeforeAfterGame from './components/games/BeforeAfterGame';
 import { GAMES } from './data/games';
 
 const COMPONENT_MAP = {
@@ -43,6 +45,8 @@ const COMPONENT_MAP = {
   'find-missing': MissingLetter,
   'phonics-sounds': PhonicsGame,
   'this-that': ThisThatGame,
+  'opposite-words': OppositeWords,
+  'before-after': BeforeAfterGame,
 };
 
 const AppContent = () => {
