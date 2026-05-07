@@ -22,9 +22,19 @@ export const GAME_DATA = {
     levels: {
       1: [
         { left: 'CAT', right: 'BAT' }, { left: 'DOG', right: 'LOG' },
+        { left: 'PAN', right: 'FAN' }, { left: 'SUN', right: 'RUN' },
       ],
       2: [
-        { left: 'SUN', right: 'RUN' }, { left: 'PAN', right: 'FAN' },
+        { left: 'MAP', right: 'TAP' }, { left: 'PEN', right: 'HEN' },
+        { left: 'BIG', right: 'PIG' }, { left: 'HOT', right: 'POT' },
+      ],
+      3: [
+        { left: 'WALL', right: 'BALL' }, { left: 'CAKE', right: 'BAKE' },
+        { left: 'STAR', right: 'CAR' }, { left: 'FISH', right: 'DISH' },
+      ],
+      4: [
+        { left: 'RING', right: 'SING' }, { left: 'KITE', right: 'NITE' },
+        { left: 'MOUSE', right: 'HOUSE' }, { left: 'GOAT', right: 'BOAT' },
       ]
     }
   },

@@ -131,6 +131,7 @@ const GameManager = ({ level, gameComponent: GameComponent, onBack }) => {
            <div className="max-w-4xl w-full h-full bg-white/10 backdrop-blur-sm rounded-[4rem] border-8 border-white/20 p-8 shadow-inner overflow-y-auto">
              {GameComponent && (
                <GameComponent 
+                 id={level.gameType}
                  onScore={handleScore} 
                  difficulty={level.difficulty} 
                  isPaused={gameState !== 'playing'}
