@@ -2,236 +2,148 @@ export const GAME_DATA = {
   'phonics-sounds': {
     type: 'audio-quiz',
     title: 'Phonics Sounds',
-    questions: [
-      { q: 'Which letter says "Ah"?', a: 'A', opts: ['A', 'B', 'C'] },
-      { q: 'Which letter says "Buh"?', a: 'B', opts: ['B', 'D', 'P'] },
-      { q: 'Which letter says "Cuh"?', a: 'C', opts: ['C', 'K', 'S'] },
-      { q: 'Which letter says "Duh"?', a: 'D', opts: ['D', 'T', 'B'] },
-      { q: 'Which letter says "Eh"?', a: 'E', opts: ['E', 'I', 'A'] },
-      { q: 'Which letter says "Fuh"?', a: 'F', opts: ['F', 'V', 'P'] },
-      { q: 'Which letter says "Guh"?', a: 'G', opts: ['G', 'J', 'K'] },
-      { q: 'Which letter says "Huh"?', a: 'H', opts: ['H', 'W', 'K'] },
-      { q: 'Which letter says "Ih"?', a: 'I', opts: ['I', 'E', 'Y'] },
-      { q: 'Which letter says "Juh"?', a: 'J', opts: ['J', 'G', 'Z'] },
-      { q: 'Which letter says "Kuh"?', a: 'K', opts: ['K', 'C', 'Q'] },
-      { q: 'Which letter says "Luh"?', a: 'L', opts: ['L', 'R', 'N'] },
-      { q: 'Which letter says "Muh"?', a: 'M', opts: ['M', 'N', 'W'] },
-      { q: 'Which letter says "Nuh"?', a: 'N', opts: ['N', 'M', 'L'] },
-      { q: 'Which letter says "Oh"?', a: 'O', opts: ['O', 'U', 'A'] },
-      { q: 'Which letter says "Puh"?', a: 'P', opts: ['P', 'B', 'F'] },
-      { q: 'Which letter says "Quuh"?', a: 'Q', opts: ['Q', 'K', 'C'] },
-      { q: 'Which letter says "Ruh"?', a: 'R', opts: ['R', 'L', 'D'] },
-      { q: 'Which letter says "Suh"?', a: 'S', opts: ['S', 'C', 'Z'] },
-      { q: 'Which letter says "Tuh"?', a: 'T', opts: ['T', 'D', 'P'] },
-      { q: 'Which letter says "Uh"?', a: 'U', opts: ['U', 'O', 'A'] },
-      { q: 'Which letter says "Vuh"?', a: 'V', opts: ['V', 'F', 'B'] },
-      { q: 'Which letter says "Wuh"?', a: 'W', opts: ['W', 'V', 'H'] },
-      { q: 'Which letter says "X-uh"?', a: 'X', opts: ['X', 'Z', 'S'] },
-      { q: 'Which letter says "Yuh"?', a: 'Y', opts: ['Y', 'I', 'J'] },
-      { q: 'Which letter says "Zuh"?', a: 'Z', opts: ['Z', 'S', 'J'] },
-    ]
+    levels: {
+      1: [
+        { q: 'Which letter says "Ah"?', a: 'A', opts: ['A', 'B', 'C'] },
+        { q: 'Which letter says "Buh"?', a: 'B', opts: ['B', 'D', 'P'] },
+      ],
+      2: [
+        { q: 'Which letter says "Cuh"?', a: 'C', opts: ['C', 'K', 'S'] },
+        { q: 'Which letter says "Duh"?', a: 'D', opts: ['D', 'T', 'B'] },
+      ],
+      3: [
+        { q: 'Which letter says "Eh"?', a: 'E', opts: ['E', 'I', 'A'] },
+        { q: 'Which letter says "Fuh"?', a: 'F', opts: ['F', 'V', 'P'] },
+      ],
+      4: [
+        { q: 'Which letter says "Guh"?', a: 'G', opts: ['G', 'J', 'K'] },
+        { q: 'Which letter says "Huh"?', a: 'H', opts: ['H', 'W', 'K'] },
+      ],
+      5: [
+        { q: 'Which letter says "Ih"?', a: 'I', opts: ['I', 'E', 'Y'] },
+        { q: 'Which letter says "Juh"?', a: 'J', opts: ['J', 'G', 'Z'] },
+      ]
+    }
   },
   'rhyming-words': {
     type: 'match',
     title: 'Rhyming Pairs',
-    pairs: [
-      { left: 'CAT', right: 'BAT' }, { left: 'DOG', right: 'LOG' },
-      { left: 'SUN', right: 'RUN' }, { left: 'PAN', right: 'FAN' },
-      { left: 'MAP', right: 'TAP' }, { left: 'PEN', right: 'HEN' },
-      { left: 'BIG', right: 'PIG' }, { left: 'HOT', right: 'POT' },
-      { left: 'COLD', right: 'GOLD' }, { left: 'BOOK', right: 'COOK' },
-      { left: 'WALL', right: 'BALL' }, { left: 'RING', right: 'SING' },
-      { left: 'CAKE', right: 'BAKE' }, { left: 'MOUSE', right: 'HOUSE' },
-      { left: 'STAR', right: 'CAR' }, { left: 'MOON', right: 'SOON' },
-      { left: 'RAIN', right: 'TRAIN' }, { left: 'TREE', right: 'BEE' },
-      { left: 'LIGHT', right: 'NIGHT' }, { left: 'BLUE', right: 'GLUE' },
-      { left: 'SHOE', right: 'TWO' }, { left: 'CHAIR', right: 'BEAR' },
-      { left: 'ICE', right: 'RICE' }, { left: 'DUCK', right: 'TRUCK' },
-      { left: 'KEY', right: 'TEA' }, { left: 'FISH', right: 'DISH' },
-    ]
+    levels: {
+      1: [
+        { left: 'CAT', right: 'BAT' }, { left: 'DOG', right: 'LOG' },
+      ],
+      2: [
+        { left: 'SUN', right: 'RUN' }, { left: 'PAN', right: 'FAN' },
+      ],
+      3: [
+        { left: 'MAP', right: 'TAP' }, { left: 'PEN', right: 'HEN' },
+      ],
+      4: [
+        { left: 'BIG', right: 'PIG' }, { left: 'HOT', right: 'POT' },
+      ],
+      5: [
+        { left: 'WALL', right: 'BALL' }, { left: 'CAKE', right: 'BAKE' },
+      ]
+    }
   },
-  'one-and-many': {
-    type: 'match',
-    title: 'One & Many',
-    pairs: [
-      { left: '🍎 Apple', right: '🍎🍎 Apples' },
-      { left: '🐶 Dog', right: '🐶🐶 Dogs' },
-      { left: '🐱 Cat', right: '🐱🐱 Cats' },
-      { left: '🚗 Car', right: '🚗🚗 Cars' },
-      { left: '🌳 Tree', right: '🌳🌳 Trees' },
-      { left: '📚 Book', right: '📚📚 Books' },
-      { left: '⭐ Star', right: '⭐⭐ Stars' },
-      { left: '🏀 Ball', right: '🏀🏀 Balls' },
-      { left: '🧢 Cap', right: '🧢🧢 Caps' },
-      { left: '🧁 Cake', right: '🧁🧁 Cakes' },
-      { left: '🐧 Bird', right: '🐧🐧 Birds' },
-      { left: '🏠 House', right: '🏠🏠 Houses' },
-      { left: '✏️ Pencil', right: '✏️✏️ Pencils' },
-      { left: '🧴 Bottle', right: '🧴🧴 Bottles' },
-      { left: '🚲 Cycle', right: '🚲🚲 Cycles' },
-      { left: '🪑 Chair', right: '🪑🪑 Chairs' },
-    ]
-  },
-  'opposite-words': {
-    type: 'match',
-    title: 'Opposite Words',
-    pairs: [
-      { left: 'HOT ☀️', right: 'COLD ❄️' }, { left: 'BIG 🐘', right: 'SMALL 🐭' },
-      { left: 'HAPPY 😄', right: 'SAD 😢' }, { left: 'DAY ☀️', right: 'NIGHT 🌙' },
-      { left: 'UP ⬆️', right: 'DOWN ⬇️' }, { left: 'IN 📥', right: 'OUT 📤' },
-      { left: 'FAST 🏎️', right: 'SLOW 🐢' }, { left: 'TALL 🦒', right: 'SHORT 🐒' },
-      { left: 'WET ☔', right: 'DRY 🌵' }, { left: 'DIRTY 💩', right: 'CLEAN ✨' },
-      { left: 'SOFT ☁️', right: 'HARD 💎' }, { left: 'HEAVY ⚓', right: 'LIGHT 🎈' },
-      { left: 'OPEN 📖', right: 'CLOSED 📕' }, { left: 'NEAR 🏠', right: 'FAR 🏔️' },
-      { left: 'OLD 👴', right: 'YOUNG 👶' }, { left: 'LEFT ⬅️', right: 'RIGHT ➡️' },
-    ]
+  'naming-words': {
+    type: 'sorting',
+    title: 'Naming Words',
+    levels: {
+      1: [
+        { name: 'Teacher', cat: 'Person', emoji: '🧑‍🏫' },
+        { name: 'Lion', cat: 'Animal', emoji: '🦁' },
+      ],
+      2: [
+        { name: 'School', cat: 'Place', emoji: '🏫' },
+        { name: 'Pencil', cat: 'Thing', emoji: '✏️' },
+      ],
+      3: [
+        { name: 'Doctor', cat: 'Person', emoji: '👨‍⚕️' },
+        { name: 'Elephant', cat: 'Animal', emoji: '🐘' },
+      ],
+      4: [
+        { name: 'Hospital', cat: 'Place', emoji: '🏥' },
+        { name: 'Book', cat: 'Thing', emoji: '📖' },
+      ],
+      5: [
+        { name: 'Farmer', cat: 'Person', emoji: '👨‍🌾' },
+        { name: 'Tiger', cat: 'Animal', emoji: '🐯' },
+      ]
+    }
   },
   'use-of-a-an': {
     type: 'quiz',
     title: 'A or An?',
-    questions: [
-      { q: '___ Apple', a: 'An', opts: ['A', 'An'] },
-      { q: '___ Dog', a: 'A', opts: ['A', 'An'] },
-      { q: '___ Elephant', a: 'An', opts: ['A', 'An'] },
-      { q: '___ Umbrella', a: 'An', opts: ['A', 'An'] },
-      { q: '___ Orange', a: 'An', opts: ['A', 'An'] },
-      { q: '___ Ice Cream', a: 'An', opts: ['A', 'An'] },
-      { q: '___ Ball', a: 'A', opts: ['A', 'An'] },
-      { q: '___ Car', a: 'A', opts: ['A', 'An'] },
-      { q: '___ Egg', a: 'An', opts: ['A', 'An'] },
-      { q: '___ Owl', a: 'An', opts: ['A', 'An'] },
-      { q: '___ Hat', a: 'A', opts: ['A', 'An'] },
-      { q: '___ Kite', a: 'A', opts: ['A', 'An'] },
-      { q: '___ Octopus', a: 'An', opts: ['A', 'An'] },
-      { q: '___ Uniform', a: 'A', opts: ['A', 'An'] }, // Special case for pronunciation
-      { q: '___ Ant', a: 'An', opts: ['A', 'An'] },
-      { q: '___ Box', a: 'A', opts: ['A', 'An'] },
-    ]
+    levels: {
+      1: [
+        { q: '___ Apple', a: 'An', opts: ['A', 'An'] },
+        { q: '___ Dog', a: 'A', opts: ['A', 'An'] },
+      ],
+      2: [
+        { q: '___ Orange', a: 'An', opts: ['A', 'An'] },
+        { q: '___ Hat', a: 'A', opts: ['A', 'An'] },
+      ],
+      3: [
+        { q: '___ Elephant', a: 'An', opts: ['A', 'An'] },
+        { q: '___ Umbrella', a: 'An', opts: ['A', 'An'] },
+      ],
+      4: [
+        { q: '___ Ball', a: 'A', opts: ['A', 'An'] },
+        { q: '___ Car', a: 'A', opts: ['A', 'An'] },
+      ],
+      5: [
+        { q: '___ Ice Cream', a: 'An', opts: ['A', 'An'] },
+        { q: '___ Uniform', a: 'A', opts: ['A', 'An'] },
+      ]
+    }
   },
   'this-that': {
     type: 'quiz',
     title: 'This or That?',
-    questions: [
-      { q: 'Near object (here): ___ is a book.', a: 'This', opts: ['This', 'That'] },
-      { q: 'Far object (there): ___ is a star.', a: 'That', opts: ['This', 'That'] },
-      { q: 'Near object: ___ is my pencil.', a: 'This', opts: ['This', 'That'] },
-      { q: 'Far object: ___ is a mountain.', a: 'That', opts: ['This', 'That'] },
-      { q: 'Point to near: ___ is an apple.', a: 'This', opts: ['This', 'That'] },
-      { q: 'Point to far: ___ is the moon.', a: 'That', opts: ['This', 'That'] },
-    ]
+    levels: {
+      1: [
+        { q: 'Near: ___ is a book.', a: 'This', opts: ['This', 'That'] },
+        { q: 'Far: ___ is a star.', a: 'That', opts: ['This', 'That'] },
+      ],
+      2: [
+        { q: 'Near: ___ is my toy.', a: 'This', opts: ['This', 'That'] },
+        { q: 'Far: ___ is the moon.', a: 'That', opts: ['This', 'That'] },
+      ]
+    }
   },
   'parts-of-body': {
     type: 'quiz',
     title: 'Parts of Body',
-    questions: [
-      { q: 'What do you use to see?', a: 'Eyes', opts: ['Eyes', 'Ears', 'Nose'] },
-      { q: 'What do you use to smell?', a: 'Nose', opts: ['Eyes', 'Ears', 'Nose'] },
-      { q: 'What do you use to walk?', a: 'Legs', opts: ['Hands', 'Legs', 'Arms'] },
-      { q: 'What do you use to eat?', a: 'Mouth', opts: ['Mouth', 'Eyes', 'Ears'] },
-      { q: 'What do you use to hear?', a: 'Ears', opts: ['Ears', 'Eyes', 'Nose'] },
-      { q: 'How many fingers do you have?', a: 'Ten', opts: ['Five', 'Ten', 'Two'] },
-      { q: 'What do you use to hold things?', a: 'Hands', opts: ['Hands', 'Feet', 'Head'] },
-      { q: 'Which part is for thinking?', a: 'Brain', opts: ['Brain', 'Stomach', 'Legs'] },
-    ]
+    levels: {
+      1: [
+        { q: 'What do you use to see?', a: 'Eyes', opts: ['Eyes', 'Ears', 'Nose'] },
+        { q: 'What do you use to smell?', a: 'Nose', opts: ['Eyes', 'Ears', 'Nose'] },
+      ],
+      2: [
+        { q: 'What do you use to walk?', a: 'Legs', opts: ['Hands', 'Legs', 'Arms'] },
+        { q: 'What do you use to eat?', a: 'Mouth', opts: ['Mouth', 'Eyes', 'Ears'] },
+      ]
+    }
   },
   'fruits-veggies': {
     type: 'sorting',
     title: 'Fruit or Vegetable?',
-    items: [
-      { name: 'Apple', cat: 'Fruit', emoji: '🍎' }, { name: 'Carrot', cat: 'Veggie', emoji: '🥕' },
-      { name: 'Banana', cat: 'Fruit', emoji: '🍌' }, { name: 'Potato', cat: 'Veggie', emoji: '🥔' },
-      { name: 'Grapes', cat: 'Fruit', emoji: '🍇' }, { name: 'Tomato', cat: 'Veggie', emoji: '🍅' },
-      { name: 'Mango', cat: 'Fruit', emoji: '🥭' }, { name: 'Broccoli', cat: 'Veggie', emoji: '🥦' },
-      { name: 'Orange', cat: 'Fruit', emoji: '🍊' }, { name: 'Cucumber', cat: 'Veggie', emoji: '🥒' },
-      { name: 'Strawberry', cat: 'Fruit', emoji: '🍓' }, { name: 'Corn', cat: 'Veggie', emoji: '🌽' },
-      { name: 'Watermelon', cat: 'Fruit', emoji: '🍉' }, { name: 'Onion', cat: 'Veggie', emoji: '🧅' },
-      { name: 'Cherry', cat: 'Fruit', emoji: '🍒' }, { name: 'Peas', cat: 'Veggie', emoji: '🫛' },
-    ]
-  },
-  'simple-sentences': {
-    type: 'quiz',
-    title: 'Complete the Sentence',
-    questions: [
-      { q: 'The cat ___ on the mat.', a: 'sat', opts: ['sat', 'run', 'fly'] },
-      { q: 'I ___ a big apple.', a: 'eat', opts: ['eat', 'walk', 'jump'] },
-      { q: 'The sun is ___ in the sky.', a: 'bright', opts: ['bright', 'cold', 'wet'] },
-      { q: 'The dog ___ at the cat.', a: 'barked', opts: ['barked', 'sang', 'cooked'] },
-    ]
-  },
-  'greetings': {
-    type: 'quiz',
-    title: 'Greetings & Manners',
-    questions: [
-      { q: 'What do you say in the morning?', a: 'Good Morning', opts: ['Good Morning', 'Good Night', 'Goodbye'] },
-      { q: 'What do you say when you get a gift?', a: 'Thank You', opts: ['Thank You', 'Sorry', 'Hello'] },
-      { q: 'What do you say when you do something wrong?', a: 'Sorry', opts: ['Sorry', 'Welcome', 'Please'] },
-    ]
-  },
-  'animals-birds': {
-    type: 'sorting',
-    title: 'Animal or Bird?',
-    items: [
-      { name: 'Lion', cat: 'Animal', emoji: '🦁' },
-      { name: 'Parrot', cat: 'Bird', emoji: '🦜' },
-      { name: 'Elephant', cat: 'Animal', emoji: '🐘' },
-      { name: 'Sparrow', cat: 'Bird', emoji: '🐦' },
-      { name: 'Tiger', cat: 'Animal', emoji: '🐯' },
-      { name: 'Eagle', cat: 'Bird', emoji: '🦅' },
-    ]
-  },
-  'my-family': {
-    type: 'quiz',
-    title: 'All About Family',
-    questions: [
-      { q: 'Who is your mother\'s husband?', a: 'Father', opts: ['Father', 'Uncle', 'Grandpa'] },
-      { q: 'Who is your father\'s daughter?', a: 'Sister', opts: ['Sister', 'Brother', 'Aunt'] },
-      { q: 'Who is your mother\'s mother?', a: 'Grandmother', opts: ['Grandmother', 'Sister', 'Mother'] },
-    ]
-  },
-  'my-school': {
-    type: 'quiz',
-    title: 'School Objects',
-    questions: [
-      { q: 'Where do you write?', a: 'Notebook', opts: ['Notebook', 'Bottle', 'Chair'] },
-      { q: 'What does the teacher use to write on the board?', a: 'Chalk', opts: ['Chalk', 'Pen', 'Pencil'] },
-      { q: 'Where do you sit in class?', a: 'Bench', opts: ['Bench', 'Table', 'Bag'] },
-    ]
-  },
-  'months-year': {
-    type: 'quiz',
-    title: 'Months of the Year',
-    questions: [
-      { q: 'Which is the first month of the year?', a: 'January', opts: ['January', 'February', 'December'] },
-      { q: 'Which month has Christmas?', a: 'December', opts: ['October', 'November', 'December'] },
-      { q: 'How many months are in a year?', a: '12', opts: ['10', '11', '12'] },
-    ]
-  },
-  'paragraph-writing': {
-    type: 'quiz',
-    title: 'Fill the Story',
-    questions: [
-      { q: 'My name is Aarav. I ___ in Class 1.', a: 'study', opts: ['study', 'play', 'sleep'] },
-      { q: 'I love to eat ___ apples.', a: 'sweet', opts: ['sweet', 'sour', 'bitter'] },
-      { q: 'My school is very ___.', a: 'big', opts: ['big', 'tiny', 'old'] },
-    ]
-  },
-  'picture-reading': {
-    type: 'quiz',
-    title: 'Picture Reading',
-    questions: [
-      { q: '🌳 What is this?', a: 'Tree', opts: ['Tree', 'Flower', 'Grass'] },
-      { q: '🏠 What is this?', a: 'House', opts: ['House', 'Car', 'Boat'] },
-      { q: '🚲 What is this?', a: 'Bicycle', opts: ['Bicycle', 'Plane', 'Train'] },
-    ]
-  },
-  'find-missing': {
-    type: 'quiz',
-    title: 'Find Missing Letter',
-    questions: [
-      { q: 'A B _ D', a: 'C', opts: ['C', 'E', 'F'] },
-      { q: 'H _ J K', a: 'I', opts: ['L', 'I', 'M'] },
-      { q: 'P Q R _', a: 'S', opts: ['T', 'S', 'U'] },
-      { q: 'U V _ X', a: 'W', opts: ['W', 'Y', 'Z'] },
-    ]
+    levels: {
+      1: [
+        { name: 'Apple', cat: 'Fruit', emoji: '🍎' },
+        { name: 'Carrot', cat: 'Veggie', emoji: '🥕' },
+      ],
+      2: [
+        { name: 'Banana', cat: 'Fruit', emoji: '🍌' },
+        { name: 'Potato', cat: 'Veggie', emoji: '🥔' },
+      ]
+    }
   }
+};
+
+export const getContentForLevel = (gameId, difficulty) => {
+  const game = GAME_DATA[gameId];
+  if (!game || !game.levels) return null;
+  return game.levels[difficulty] || game.levels[1] || [];
 };
