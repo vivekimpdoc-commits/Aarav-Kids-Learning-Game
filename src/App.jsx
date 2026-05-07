@@ -12,22 +12,11 @@ import NumbersInWords from './components/games/NumbersInWords';
 import ColoursGame from './components/games/ColoursGame';
 import DaysOfWeek from './components/games/DaysOfWeek';
 import HeSheQuiz from './components/games/HeSheQuiz';
+import LetterTracing from './components/games/LetterTracing';
+import PoemsPlayer from './components/games/PoemsPlayer';
+import UniversalGame from './components/games/UniversalGame';
 import { ArrowLeft, Volume2, VolumeX, Moon, Sun } from 'lucide-react';
 import { Button } from './components/ui/KidsUI';
-
-// Placeholder for other games
-const GameStub = ({ id, onBack }) => (
-  <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-kids-sky/10">
-    <Button onClick={onBack} className="absolute top-8 left-8" variant="secondary">
-      <ArrowLeft /> Back
-    </Button>
-    <div className="text-center space-y-6">
-      <h2 className="text-6xl font-black text-slate-800 uppercase">{id.replace(/-/g, ' ')}</h2>
-      <div className="text-8xl animate-bounce">🚀</div>
-      <p className="text-3xl font-bold text-slate-600">Coming Soon!</p>
-    </div>
-  </div>
-);
 
 const AppContent = () => {
   const [activeGame, setActiveGame] = useState(null);
@@ -58,8 +47,15 @@ const AppContent = () => {
         return <DaysOfWeek onBack={() => setActiveGame(null)} />;
       case 'he-she':
         return <HeSheQuiz onBack={() => setActiveGame(null)} />;
+      case 'letter-tracing':
+        return <LetterTracing onBack={() => setActiveGame(null)} />;
+      case 'poems-rhymes':
+        return <PoemsPlayer onBack={() => setActiveGame(null)} />;
       default:
-        if (activeGame) return <GameStub id={activeGame} onBack={() => setActiveGame(null)} />;
+        // Use Universal Game for all other modules! No more "Coming Soon"
+        if (activeGame) {
+          return <UniversalGame id={activeGame} onBack={() => setActiveGame(null)} />;
+        }
         return (
           <div className="min-h-screen">
             <nav className="p-4 flex justify-end gap-4">

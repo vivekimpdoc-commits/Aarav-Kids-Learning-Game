@@ -37,6 +37,8 @@ const Repeat = RotateCcw;
 
 export const GAMES = [
   { id: 'alphabet-matching', title: 'Alphabet Matching', icon: Type, color: 'bg-pink-400', category: 'Basics' },
+  { id: 'letter-tracing', title: 'Letter Tracing', icon: PenTool, color: 'bg-orange-400', category: 'Basics' },
+  { id: 'find-missing', title: 'Find Missing Letter', icon: Shuffle, color: 'bg-sky-500', category: 'Basics' },
   { id: 'vowels-consonants', title: 'Vowels & Consonants', icon: Binary, color: 'bg-sky-400', category: 'Basics' },
   { id: 'phonics-sounds', title: 'Phonics Sounds', icon: Mic, color: 'bg-yellow-400', category: 'Phonics' },
   { id: 'rhyming-words', title: 'Rhyming Words', icon: Repeat, color: 'bg-green-400', category: 'Words' },
