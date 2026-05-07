@@ -12,40 +12,37 @@ const THEMES = [
 
 const WEATHER = ['sunny', 'rainy', 'snowy', 'windy', 'cloudy', 'stormy'];
 
-export const LEVELS = Array.from({ length: 100 }, (_, i) => {
-  const levelNum = i + 1;
-  const themeIdx = Math.floor(i / 15) % THEMES.length;
-  const weatherIdx = Math.floor(i / 10) % WEATHER.length;
-  const isBoss = levelNum % 10 === 0;
-  
-  // Game Topic Cycles
-  const gameIdx = i % GAMES.length;
-
-  return {
-    id: levelNum,
-    title: `Level ${levelNum}`,
-    gameType: GAMES[gameIdx].id,
-    isBoss,
-    theme: THEMES[themeIdx],
-    weather: WEATHER[weatherIdx],
-    difficulty: Math.floor(i / 5) + 1,
-    timeLimit: Math.max(10, 60 - Math.floor(i / 2)),
-    targetScore: 5 + Math.floor(i / 3),
+export const getLevelsForGame = (gameId) => {
+  return Array.from({ length: 20 }, (_, i) => {
+    const levelNum = i + 1;
+    const themeIdx = Math.floor(i / 4) % THEMES.length;
+    const weatherIdx = Math.floor(i / 3) % WEATHER.length;
+    const isBoss = levelNum % 5 === 0;
     
-    // New Action Mechanics
-    hasEnemies: levelNum >= 5,
-    enemySpeed: 1 + (i / 20),
-    hasObstacles: levelNum >= 2,
-    hasNightMode: levelNum >= 20,
-    
-    // Rewards
-    reward: isBoss ? 500 : 50 + (i * 2),
-    xp: isBoss ? 300 : 20 + (i * 5),
-    
-    // Mission Text
-    mission: isBoss ? "Defeat the Topic Master!" : `Complete ${5 + Math.floor(i/3)} challenges!`
-  };
-});
+    return {
+      id: `${gameId}-${levelNum}`,
+      num: levelNum,
+      gameType: gameId,
+      isBoss,
+      theme: THEMES[themeIdx],
+      weather: WEATHER[weatherIdx],
+      difficulty: Math.floor(i / 2) + 1,
+      timeLimit: Math.max(15, 60 - (i * 3)),
+      targetScore: 5 + (i * 2),
+      
+      // Action Mechanics
+      hasEnemies: levelNum >= 3,
+      enemySpeed: 1 + (i / 10),
+      hasObstacles: levelNum >= 2,
+      hasNightMode: levelNum >= 10,
+      
+      // Rewards
+      reward: isBoss ? 200 : 50 + (i * 10),
+      xp: isBoss ? 100 : 20 + (i * 5),
+      mission: isBoss ? "Defeat the Master!" : `Complete ${5 + (i*2)} challenges!`
+    };
+  });
+};
 
 export const RANKS = [
   { xp: 0, title: 'Novice', color: 'text-slate-400' },
@@ -60,4 +57,10 @@ export const CHARACTERS = [
   { id: 'maya', name: 'Maya', emoji: '👧', price: 1000 },
   { id: 'leo', name: 'Lion Leo', emoji: '🦁', price: 5000 },
   { id: 'owl', name: 'Wise Owl', emoji: '🦉', price: 15000 },
+];
+
+export const ACHIEVEMENTS = [
+  { id: 'first_win', title: 'First Win!', icon: '🏆', description: 'Complete your first level' },
+  { id: 'star_collector', title: 'Star Collector', icon: '⭐', description: 'Collect 100 stars' },
+  { id: 'boss_slayer', title: 'Boss Slayer', icon: '👑', description: 'Beat your first boss level' },
 ];
