@@ -15,7 +15,20 @@ const NumbersInWords = ({ onBack }) => {
     { n: 1, w: 'ONE' }, { n: 2, w: 'TWO' }, { n: 3, w: 'THREE' },
     { n: 4, w: 'FOUR' }, { n: 5, w: 'FIVE' }, { n: 6, w: 'SIX' },
     { n: 7, w: 'SEVEN' }, { n: 8, w: 'EIGHT' }, { n: 9, w: 'NINE' },
-    { n: 10, w: 'TEN' }
+    { n: 10, w: 'TEN' }, { n: 11, w: 'ELEVEN' }, { n: 12, w: 'TWELVE' },
+    { n: 13, w: 'THIRTEEN' }, { n: 14, w: 'FOURTEEN' }, { n: 15, w: 'FIFTEEN' },
+    { n: 16, w: 'SIXTEEN' }, { n: 17, w: 'SEVENTEEN' }, { n: 18, w: 'EIGHTEEN' },
+    { n: 19, w: 'NINETEEN' }, { n: 20, w: 'TWENTY' }, { n: 21, w: 'TWENTY-ONE' },
+    { n: 22, w: 'TWENTY-TWO' }, { n: 23, w: 'TWENTY-THREE' }, { n: 24, w: 'TWENTY-FOUR' },
+    { n: 25, w: 'TWENTY-FIVE' }, { n: 26, w: 'TWENTY-SIX' }, { n: 27, w: 'TWENTY-SEVEN' },
+    { n: 28, w: 'TWENTY-EIGHT' }, { n: 29, w: 'TWENTY-NINE' }, { n: 30, w: 'THIRTY' },
+    { n: 31, w: 'THIRTY-ONE' }, { n: 32, w: 'THIRTY-TWO' }, { n: 33, w: 'THIRTY-THREE' },
+    { n: 34, w: 'THIRTY-FOUR' }, { n: 35, w: 'THIRTY-FIVE' }, { n: 36, w: 'THIRTY-SIX' },
+    { n: 37, w: 'THIRTY-SEVEN' }, { n: 38, w: 'THIRTY-EIGHT' }, { n: 39, w: 'THIRTY-NINE' },
+    { n: 40, w: 'FORTY' }, { n: 41, w: 'FORTY-ONE' }, { n: 42, w: 'FORTY-TWO' },
+    { n: 43, w: 'FORTY-THREE' }, { n: 44, w: 'FORTY-FOUR' }, { n: 45, w: 'FORTY-FIVE' },
+    { n: 46, w: 'FORTY-SIX' }, { n: 47, w: 'FORTY-SEVEN' }, { n: 48, w: 'FORTY-EIGHT' },
+    { n: 49, w: 'FORTY-NINE' }, { n: 50, w: 'FIFTY' }
   ];
 
   const generateRound = () => {

@@ -18,6 +18,20 @@ const ActionWords = ({ onBack }) => {
     { name: 'EAT', emoji: '🍕', animation: { scale: [1, 1.2, 1] } },
     { name: 'DANCE', emoji: '💃', animation: { rotate: [0, 20, -20, 0] } },
     { name: 'SWIM', emoji: '🏊', animation: { x: [0, -50, 50, 0] } },
+    { name: 'CLAP', emoji: '👏', animation: { scale: [1, 0.8, 1.2, 1] } },
+    { name: 'LAUGH', emoji: '😂', animation: { y: [0, -20, 0] } },
+    { name: 'READ', emoji: '📖', animation: { rotateY: [0, 180, 0] } },
+    { name: 'WRITE', emoji: '✏️', animation: { x: [0, 10, -10, 0] } },
+    { name: 'SING', emoji: '🎤', animation: { scale: [1, 1.1, 0.9, 1] } },
+    { name: 'DRINK', emoji: '🥤', animation: { rotate: [0, -45, 0] } },
+    { name: 'FLY', emoji: '✈️', animation: { x: [-100, 100], y: [-20, 20] } },
+    { name: 'SIT', emoji: '🪑', animation: { y: [0, 20] } },
+    { name: 'STAND', emoji: '🧍', animation: { y: [20, 0] } },
+    { name: 'WAVE', emoji: '👋', animation: { rotate: [0, 30, -30, 0] } },
+    { name: 'DRIVE', emoji: '🚗', animation: { x: [0, 10, 0], y: [0, 2, 0] } },
+    { name: 'PAINT', emoji: '🎨', animation: { x: [0, 20, 0], y: [0, -20, 0] } },
+    { name: 'CLEAN', emoji: '✨', animation: { opacity: [0, 1, 0] } },
+    { name: 'CRY', emoji: '😢', animation: { y: [0, 5, 0] } },
   ];
 
   const generateRound = () => {
