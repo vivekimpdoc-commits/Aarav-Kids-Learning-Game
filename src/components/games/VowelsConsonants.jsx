@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-
+import { useState } from 'react';
 
 import { motion } from 'framer-motion';
-import { Card } from '../ui/KidsUI';
 
-const VowelsConsonants = ({ onScore, difficulty, isPaused }) => {
+const VowelsConsonants = ({ onScore, isPaused }) => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   const [current, setCurrent] = useState(letters[0]);
   const [idx, setIdx] = useState(0);
